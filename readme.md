@@ -17,3 +17,15 @@
 
 1. AngularJS (1.x): https://angularjs.org/
 2. Angular (> 2.x): https://angular.io/
+
+
+### Alternatives
+
+1. Angular : Framework
+2. React - Facebook : Library : Virtual DOM
+3. Vue.js - Google Angular(Old Employees) : Library
+
+### Component
+
+1. Components have to be part of a module.
+2. In a module the defined the the declarations array

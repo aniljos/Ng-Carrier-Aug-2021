@@ -1,0 +1,22 @@
+<h4>Data Binding</h4>
+
+<div>
+    Name: {{name}}
+</div>
+<div>
+   5 + 6 =  {{5 + 6}}
+</div>
+
+<div>
+    Count: <input type="number" [value]="count"/>
+    {{count}}
+</div>
+
+<div>
+    <button (click)="increment($event)">Inc</button>
+</div>
+
+<div>
+    Message: <input [(ngModel)]="message"/>
+    {{message}}
+</div>

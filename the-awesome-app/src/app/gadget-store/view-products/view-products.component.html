@@ -1,3 +1,4 @@
+
 <div class="card" *ngFor="let item of products; even as even; odd as odd">
     <div class="card-header" [ngClass]="{'bg-success': odd, 'bg-warning': even}">
         {{item.name}}

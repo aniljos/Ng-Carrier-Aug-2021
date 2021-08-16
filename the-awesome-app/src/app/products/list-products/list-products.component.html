@@ -32,7 +32,7 @@
                 <td>{{product.description}}</td>
                 <td>{{product.price | currency : "INR"}}</td>
                 <td>
-                    <button>Delete</button> &nbsp;
+                    <button (click)="delete(product)">Delete</button> &nbsp;
                     <button (click)="edit(product)">Edit</button>
                 </td>
             </tr>
@@ -68,3 +68,7 @@
             (saved)="editSaved($event)"
             (cancelled)="editCancelled($event)"></app-edit-product>
 </div>
+
+<!-- <input type="text" value="abc" onchange="foo()" onblur="bar()"/>
+
+<input type="text" [value]="theValue" (change)="foo()" (blur)="bar()"/> -->

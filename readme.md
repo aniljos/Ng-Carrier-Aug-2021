@@ -34,3 +34,12 @@
 
 1. aot --> Ahead of time compilation
 2. Ivy Compiler: From Angular 8 for performance abd debugging
+
+### Routes
+
+1. Child Routes
+2. Route Guards
+3. Lazy Loading of Modules
+4. Services
+
+### Services

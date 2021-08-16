@@ -83,5 +83,19 @@ export class ListProductsComponent implements OnInit {
             })
 
   }
+  delete(product : Product){
+
+    this.httpClient
+      .delete(this.url + "/" + product.id)
+      .subscribe(() => {
+
+        const index = this.data.findIndex(item => item.id === product.id);
+        this.data.splice(index, 1);
+
+      }, () => {
+        alert("Delete failed");
+      });
+
+  }
 
 }

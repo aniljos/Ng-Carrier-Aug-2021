@@ -20,6 +20,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,10 @@
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.price | currency : "INR"}}</td>
+                <td>
+                    <button>Delete</button> &nbsp;
+                    <button (click)="edit(product)">Edit</button>
+                </td>
             </tr>
             <tr>
                 <td> 
@@ -55,4 +60,11 @@
        Product:  {{product | json}}
     </p>
 
+</div>
+
+<div *ngIf="selectedProduct">
+    <app-edit-product 
+            [product]="selectedProduct"
+            (saved)="editSaved($event)"
+            (cancelled)="editCancelled($event)"></app-edit-product>
 </div>

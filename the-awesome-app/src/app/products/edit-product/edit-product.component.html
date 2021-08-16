@@ -1,0 +1,18 @@
+<h4>Edit Product {{product.id}}</h4>
+
+<div>
+    <p>Name</p>
+    <input [(ngModel)]="temp.name"/>
+</div>
+<div>
+    <p>Description</p>
+    <input [(ngModel)]="temp.description"/>
+</div>
+<div>
+    <p>Price</p>
+    <input type="number" [(ngModel)]="temp.price"/>
+</div>
+<div>
+    <button (click)="save()">Save</button>&nbsp;
+    <button (click)="cancel()">Cancel</button>
+</div>

@@ -14,6 +14,7 @@ export class ListProductsComponent implements OnInit {
   public errorMessage: string = "";
   public product: Product = new Product();
   public searchKey: string = "";
+  public selectedProduct: Product|null = null;
 
   private url : string;
 
@@ -53,6 +54,34 @@ export class ListProductsComponent implements OnInit {
               // this.hasError = true;
               // this.errorMessage = err.message;
             });
+  }
+
+  edit(product:Product){
+
+   // debugger;
+    this.selectedProduct = product;
+  }
+
+  editCancelled(message: string){
+    alert(message);
+    this.selectedProduct = null;
+  }
+
+  editSaved(updatedProduct: Product){
+
+    this.httpClient
+            .put(this.url + "/" + updatedProduct.id, updatedProduct)
+            .subscribe(() => {
+
+              const index = this.data.findIndex(item => item.id === updatedProduct.id);
+              this.data[index] = updatedProduct;
+              this.selectedProduct = null;
+
+            }, () => {
+
+              alert("Failed to update");
+            })
+
   }
 
 }

@@ -14,7 +14,7 @@ export class ListProductsComponent implements OnInit {
 
   constructor(private httpClient: HttpClient) { 
 
-    const url = "http://localhost:9000/products1";
+    const url = "http://localhost:9000/products";
     httpClient
           .get<Array<Product>>(url)
           .subscribe((data) => {

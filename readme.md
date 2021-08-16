@@ -29,3 +29,8 @@
 
 1. Components have to be part of a module.
 2. In a module the defined the the declarations array
+
+### Compiler
+
+1. aot --> Ahead of time compilation
+2. Ivy Compiler: From Angular 8 for performance abd debugging

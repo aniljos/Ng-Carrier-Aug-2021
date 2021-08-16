@@ -1,13 +1,21 @@
 <h4>Products</h4>
 
 <div [hidden]="hasError == false">
-    Some error 
+    Some error {{errorMessage}}
+</div>
+
+<div>
+    <input type="search" placeholder="Search" [(ngModel)]="searchKey"/>
+    <p *ngIf="searchKey">
+        Searching for {{searchKey}}
+    </p>
 </div>
 
 <div [hidden]="hasError == true">
     <table>
         <thead>
             <tr>
+                <th>Index</th>
                 <th>Product ID</th>
                 <th>Name</th>
                 <th>Description</th>
@@ -15,12 +23,36 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let product of data">
+            <tr *ngFor="let product of data | productFilter : searchKey; index as i; even as even; odd as odd" 
+                                            [ngClass]="{oddCls: odd, evenCls: even}">
+                <td>{{i}}</td>
                 <td>{{product.id}}</td>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
-                <td>{{product.price}}</td>
+                <td>{{product.price | currency : "INR"}}</td>
+            </tr>
+            <tr>
+                <td> 
+                    <button (click)="save()">Save</button>
+                </td>
+                <td>
+                    <input type="number" placeholder="ID" [(ngModel)]="product.id"/>
+                </td>
+                <td>
+                    <input type="text" placeholder="Name" [(ngModel)]="product.name"/>
+                </td>
+                <td>
+                    <input type="text" placeholder="Description" [(ngModel)]="product.description"/>
+                </td>
+                <td>
+                    <input type="number" placeholder="Price" [(ngModel)]="product.price"/>
+                </td>
             </tr>
         </tbody>
     </table>
+
+    <p>
+       Product:  {{product | json}}
+    </p>
+
 </div>

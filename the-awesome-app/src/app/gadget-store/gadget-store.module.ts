@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import {Routes, RouterModule} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CartService } from './cart.service';
 
 const routes: Routes = [
   {path: "store", component: HomeComponent, children: [
@@ -26,6 +27,14 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    {provide: CartService, useClass: CartService}
   ]
 })
 export class GadgetStoreModule { }
+
+// providers: [
+//   {provide: CartService, useClass: CartService}
+//   {provide: interface, useClass: implementation}
+// ]

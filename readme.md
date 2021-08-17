@@ -38,9 +38,9 @@
 ### Routes
 
 1. Child Routes
-2. Route Guards
-3. Lazy Loading of Modules
-4. Services
+2. Router Guards - Angular Service
+3. Lazy Loading of Modules -- bundle(main), bundle(per module/lazy)
+   
 
 ### Services
 

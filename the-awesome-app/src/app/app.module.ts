@@ -5,21 +5,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { DataBindingComponent } from './databinding/databinding.component';
 import { HelloComponent } from './hello/hello.component';
-import { ProductsModule } from './products/products.module';
+//import { ProductsModule } from './products/products.module';
 import {Routes, RouterModule} from '@angular/router';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 import { GadgetStoreModule } from './gadget-store/gadget-store.module';
 import { SearchComponent } from './search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './auth-guard.service';
 
 //configure the routers
 
 const routes: Routes = [
   {path: "home", component: HelloComponent},
   {path: "binding", component: DataBindingComponent},
-  {path: "search", component: SearchComponent},
+  {path: "search", component: SearchComponent, canActivate: [AuthGuardService] },
   {path: "login", component: LoginComponent},
+  {path: "products", 
+        loadChildren : () => import('./products/products.module').then(m => m.ProductsModule)},
   {path: "", redirectTo: "/home", pathMatch: "full"},
   {path: "**" , component: RouteNotFoundComponent}
 ]
@@ -38,7 +41,7 @@ const routes: Routes = [
     BrowserModule, 
     FormsModule, 
     ReactiveFormsModule,
-    ProductsModule,
+   // ProductsModule,
     RouterModule.forRoot(routes),
     GadgetStoreModule,
     HttpClientModule

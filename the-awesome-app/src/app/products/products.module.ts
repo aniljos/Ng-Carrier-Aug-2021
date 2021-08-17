@@ -7,9 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { ProductFilterPipe } from './product-filter.pipe';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import {Routes, RouterModule} from '@angular/router';
+import { AuthGuardService } from '../auth-guard.service';
 
 const routes: Routes = [
-  {path:"products", component: ListProductsComponent}
+  {path:"", component: ListProductsComponent, canActivate: []}
 ]
 
 @NgModule({

@@ -1,18 +1,40 @@
 <h4>Edit Product {{product.id}}</h4>
 
-<div>
-    <p>Name</p>
-    <input [(ngModel)]="temp.name"/>
-</div>
-<div>
-    <p>Description</p>
-    <input [(ngModel)]="temp.description"/>
-</div>
-<div>
-    <p>Price</p>
-    <input type="number" [(ngModel)]="temp.price"/>
-</div>
-<div>
-    <button (click)="save()">Save</button>&nbsp;
-    <button (click)="cancel()">Cancel</button>
-</div>
+<!-- Templated -->
+<!-- <form></form> -->
+<!-- ngModel -->
+
+<!-- FormGroup -->
+<form #myFormGroup="ngForm"> 
+    <div>
+        <p>Name</p>
+        <!-- FormControl(provided it has a ngModel) -->
+        <input class="form-control" name="pname" [(ngModel)]="temp.name" 
+                                    required minlength="3" #nameCtrl="ngModel"/>
+        <div *ngIf="nameCtrl.invalid" class="alert alert-danger">
+            The field is invalid
+        </div>
+    </div>
+    <div>
+        <p>Description</p>
+        <!-- FormControl(provided it has a ngModel) -->
+        <input class="form-control" name="pdesc" [(ngModel)]="temp.description" required #descCtrl="ngModel"/>
+        <div *ngIf="descCtrl.invalid" class="alert alert-danger">
+            The field is invalid
+        </div>
+    </div>
+    <div>
+        <p>Price</p>
+        <!-- FormControl(provided it has a ngModel) -->
+        <input class="form-control" name="pprice" type="number" [(ngModel)]="temp.price" required #priceCtrl="ngModel"/>
+        <div *ngIf="priceCtrl.invalid" class="alert alert-danger">
+            The field is invalid
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-success" (click)="save()" [disabled]="myFormGroup.invalid || myFormGroup.pristine">Save</button>&nbsp;
+        <button class="btn btn-warning" (click)="cancel()">Cancel</button>
+    </div>
+</form>
+
+<br/><br/><br/><br/><br/><br/>

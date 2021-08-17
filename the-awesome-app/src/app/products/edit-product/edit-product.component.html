@@ -11,8 +11,11 @@
         <!-- FormControl(provided it has a ngModel) -->
         <input class="form-control" name="pname" [(ngModel)]="temp.name" 
                                     required minlength="3" #nameCtrl="ngModel"/>
-        <div *ngIf="nameCtrl.invalid" class="alert alert-danger">
-            The field is invalid
+        <div *ngIf="nameCtrl.hasError('required')" class="alert alert-danger">
+            The field is required
+        </div>
+        <div *ngIf="nameCtrl.hasError('minlength')" class="alert alert-danger">
+            The field has min lenght 3
         </div>
     </div>
     <div>

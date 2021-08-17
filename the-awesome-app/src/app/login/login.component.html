@@ -8,6 +8,9 @@
     <div>
         <p>Name</p>
         <input name="name" class="form-control" formControlName="name"/>
+        <div *ngIf="formGroup.get('name')?.invalid && formGroup.get('name')?.dirty" class="alert alert-danger">
+            The field is required
+        </div>
     </div>
     <div>
         <p>Password</p>
@@ -16,6 +19,6 @@
 
     <br />
     <div>
-        <button class="btn btn-primary" (click)="login()">Login</button>
+        <button class="btn btn-primary" (click)="login()" [disabled]="formGroup.invalid">Login</button>
     </div>
 </div>

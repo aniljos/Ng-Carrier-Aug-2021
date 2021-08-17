@@ -8,4 +8,7 @@
 
 <div>
     <!-- results -->
+    <div *ngFor="let item of $results | async">
+        <p>{{item}}</p>
+    </div>
 </div>

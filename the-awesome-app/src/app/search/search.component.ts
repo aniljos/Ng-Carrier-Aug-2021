@@ -12,6 +12,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class SearchComponent implements OnInit {
 
   public searchFormGroup: FormGroup;
+  public results: Array<string> = [];
+
+  public $results: Observable<Array<string>> = new Observable<Array<string>>()
 
   constructor(private httpClient: HttpClient) {
 
@@ -64,6 +67,7 @@ export class SearchComponent implements OnInit {
       .subscribe((value) => {
         console.log(value);
 
+        //https://en.wikipedia.org/w/api.php?action=opensearch&format=json
         const url = "https://en.wikipedia.org/w/api.php";
         const params
           = new HttpParams()
@@ -73,11 +77,38 @@ export class SearchComponent implements OnInit {
             .set("origin", "*")
             .set("search", value)
 
-        this.httpClient
-          .get(url, {params})
-          .subscribe((data) => {
-            console.log(data);
-          })
+        //Only response data
+        // this.httpClient
+        //   .get(url, { params })
+        //   .subscribe((data) => {
+        //     console.log(data);
+        //   });
+
+        //Full Response : observe: 'response' | observe: 'body'(default)
+        // this.httpClient
+        //   .get(url, { params, observe: 'response' })
+        //   .subscribe((data) => {
+        //     console.log(data);
+        //   });
+
+
+        //Only response data with mapping
+        // this.httpClient
+        // .get<Array<any>>(url, { params, observe: 'body' })
+        // .pipe(
+        //   map(data => data[1])
+        // )
+        // .subscribe((data) => {
+        //   console.log(data);
+        //   this.results = data;
+        // });
+
+
+        this.$results = this.httpClient
+                                .get<Array<any>>(url, { params, observe: 'body' })
+                                .pipe(
+                                  map(data => data[1])
+                                )
 
       })
 

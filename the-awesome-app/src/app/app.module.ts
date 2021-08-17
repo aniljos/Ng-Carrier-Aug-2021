@@ -11,6 +11,7 @@ import { RouteNotFoundComponent } from './route-not-found/route-not-found.compon
 import { GadgetStoreModule } from './gadget-store/gadget-store.module';
 import { SearchComponent } from './search/search.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 //configure the routers
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: "home", component: HelloComponent},
   {path: "binding", component: DataBindingComponent},
   {path: "search", component: SearchComponent},
+  {path: "login", component: LoginComponent},
   {path: "", redirectTo: "/home", pathMatch: "full"},
   {path: "**" , component: RouteNotFoundComponent}
 ]
@@ -29,7 +31,8 @@ const routes: Routes = [
     HelloComponent, 
     DataBindingComponent, 
     RouteNotFoundComponent, 
-    SearchComponent
+    SearchComponent, 
+    LoginComponent
   ],
   imports: [
     BrowserModule, 

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import {Routes, RouterModule} from '@angular/router';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 import { GadgetStoreModule } from './gadget-store/gadget-store.module';
 import { SearchComponent } from './search/search.component';
+import { HttpClientModule } from '@angular/common/http';
 
 //configure the routers
 
@@ -24,14 +25,20 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, HelloComponent, DataBindingComponent, RouteNotFoundComponent, SearchComponent
+    AppComponent, 
+    HelloComponent, 
+    DataBindingComponent, 
+    RouteNotFoundComponent, 
+    SearchComponent
   ],
   imports: [
     BrowserModule, 
     FormsModule, 
+    ReactiveFormsModule,
     ProductsModule,
     RouterModule.forRoot(routes),
-    GadgetStoreModule
+    GadgetStoreModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

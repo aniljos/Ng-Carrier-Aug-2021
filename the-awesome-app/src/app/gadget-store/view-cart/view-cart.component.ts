@@ -12,7 +12,11 @@ export class ViewCartComponent implements OnInit {
   public cart: Array<CartItem> = new Array<CartItem>();
 
   constructor(private cartService: CartService) {
-      this.cart = cartService.get();
+     // this.cart = cartService.get();
+
+      this.cartService.subject.subscribe((updatedCart) => {
+        this.cart = updatedCart;
+      });
    }
 
   ngOnInit(): void {
